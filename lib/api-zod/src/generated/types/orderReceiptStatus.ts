@@ -10,5 +10,8 @@ export type OrderReceiptStatus = typeof OrderReceiptStatus[keyof typeof OrderRec
 
 
 export const OrderReceiptStatus = {
+  pending: 'pending',
   confirmed: 'confirmed',
+  shipped: 'shipped',
+  delivered: 'delivered',
 } as const;

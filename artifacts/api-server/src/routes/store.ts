@@ -77,6 +77,7 @@ router.post("/orders", async (req, res): Promise<void> => {
       note: parsed.data.note ?? null,
       items: confirmedLines,
       total,
+      status: "pending",
     })
     .returning({ id: ordersTable.id });
 
@@ -86,7 +87,7 @@ router.post("/orders", async (req, res): Promise<void> => {
       orderNumber,
       total,
       currency: "BDT",
-      status: "confirmed",
+      status: "pending",
     }),
   );
 });

@@ -100,7 +100,101 @@ export const CreateOrderResponse = zod.object({
   "orderNumber": zod.string(),
   "total": zod.number().int(),
   "currency": zod.enum(['BDT']),
-  "status": zod.enum(['confirmed'])
+  "status": zod.enum(['pending', 'confirmed', 'shipped', 'delivered'])
+})
+
+
+/**
+ * @summary Check the current admin session
+ */
+export const GetAdminSessionResponse = zod.object({
+  "authenticated": zod.boolean()
+})
+
+
+/**
+ * @summary Sign in to the order dashboard
+ */
+export const createAdminSessionBodyPasswordMax = 256;
+
+
+
+export const CreateAdminSessionBody = zod.object({
+  "password": zod.string().min(1).max(createAdminSessionBodyPasswordMax)
+})
+
+export const CreateAdminSessionResponse = zod.object({
+  "authenticated": zod.boolean()
+})
+
+
+/**
+ * @summary Sign out of the order dashboard
+ */
+export const DeleteAdminSessionResponse = zod.void()
+
+
+/**
+ * @summary List customer orders for the admin dashboard
+ */
+export const ListAdminOrdersResponseItem = zod.object({
+  "id": zod.number().int(),
+  "orderNumber": zod.string(),
+  "customerName": zod.string(),
+  "phone": zod.string(),
+  "email": zod.string().nullish(),
+  "address": zod.string(),
+  "city": zod.string(),
+  "area": zod.string().nullish(),
+  "note": zod.string().nullish(),
+  "items": zod.array(zod.object({
+  "productId": zod.string(),
+  "name": zod.string(),
+  "unitPrice": zod.number().int(),
+  "quantity": zod.number().int()
+})),
+  "total": zod.number().int(),
+  "currency": zod.enum(['BDT']),
+  "status": zod.enum(['pending', 'confirmed', 'shipped', 'delivered']),
+  "createdAt": zod.coerce.date()
+})
+export const ListAdminOrdersResponse = zod.array(ListAdminOrdersResponseItem)
+
+
+/**
+ * @summary Update an order status
+ */
+
+
+
+export const UpdateAdminOrderStatusParams = zod.object({
+  "id": zod.coerce.number().int().min(1)
+})
+
+export const UpdateAdminOrderStatusBody = zod.object({
+  "status": zod.enum(['pending', 'confirmed', 'shipped', 'delivered'])
+})
+
+export const UpdateAdminOrderStatusResponse = zod.object({
+  "id": zod.number().int(),
+  "orderNumber": zod.string(),
+  "customerName": zod.string(),
+  "phone": zod.string(),
+  "email": zod.string().nullish(),
+  "address": zod.string(),
+  "city": zod.string(),
+  "area": zod.string().nullish(),
+  "note": zod.string().nullish(),
+  "items": zod.array(zod.object({
+  "productId": zod.string(),
+  "name": zod.string(),
+  "unitPrice": zod.number().int(),
+  "quantity": zod.number().int()
+})),
+  "total": zod.number().int(),
+  "currency": zod.enum(['BDT']),
+  "status": zod.enum(['pending', 'confirmed', 'shipped', 'delivered']),
+  "createdAt": zod.coerce.date()
 })
 
 

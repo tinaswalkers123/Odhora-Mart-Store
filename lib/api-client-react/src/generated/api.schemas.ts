@@ -84,7 +84,10 @@ export type OrderReceiptStatus = typeof OrderReceiptStatus[keyof typeof OrderRec
 
 
 export const OrderReceiptStatus = {
+  pending: 'pending',
   confirmed: 'confirmed',
+  shipped: 'shipped',
+  delivered: 'delivered',
 } as const;
 
 export interface OrderReceipt {
@@ -93,5 +96,75 @@ export interface OrderReceipt {
   total: number;
   currency: OrderReceiptCurrency;
   status: OrderReceiptStatus;
+}
+
+export interface AdminLoginInput {
+  /**
+     * @minLength 1
+     * @maxLength 256
+     */
+  password: string;
+}
+
+export interface AdminSession {
+  authenticated: boolean;
+}
+
+export interface AdminOrderLine {
+  productId: string;
+  name: string;
+  unitPrice: number;
+  quantity: number;
+}
+
+export type AdminOrderCurrency = typeof AdminOrderCurrency[keyof typeof AdminOrderCurrency];
+
+
+export const AdminOrderCurrency = {
+  BDT: 'BDT',
+} as const;
+
+export type AdminOrderStatus = typeof AdminOrderStatus[keyof typeof AdminOrderStatus];
+
+
+export const AdminOrderStatus = {
+  pending: 'pending',
+  confirmed: 'confirmed',
+  shipped: 'shipped',
+  delivered: 'delivered',
+} as const;
+
+export interface AdminOrder {
+  id: number;
+  orderNumber: string;
+  customerName: string;
+  phone: string;
+  /** @nullable */
+  email?: string | null;
+  address: string;
+  city: string;
+  /** @nullable */
+  area?: string | null;
+  /** @nullable */
+  note?: string | null;
+  items: AdminOrderLine[];
+  total: number;
+  currency: AdminOrderCurrency;
+  status: AdminOrderStatus;
+  createdAt: string;
+}
+
+export type AdminOrderStatusInputStatus = typeof AdminOrderStatusInputStatus[keyof typeof AdminOrderStatusInputStatus];
+
+
+export const AdminOrderStatusInputStatus = {
+  pending: 'pending',
+  confirmed: 'confirmed',
+  shipped: 'shipped',
+  delivered: 'delivered',
+} as const;
+
+export interface AdminOrderStatusInput {
+  status: AdminOrderStatusInputStatus;
 }
 

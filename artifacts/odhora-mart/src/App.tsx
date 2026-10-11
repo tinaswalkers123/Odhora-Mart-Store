@@ -4,6 +4,7 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
+import AdminPage from '@/pages/admin';
 import { Route, Switch, useLocation, Router as WouterRouter, Link, useRoute } from 'wouter';
 import { useCreateOrder, useGetProduct, useListProducts, getGetProductQueryKey, getListProductsQueryKey } from '@workspace/api-client-react';
 import type { Product, OrderReceipt } from '@workspace/api-client-react';
@@ -70,6 +71,7 @@ function Header() {
         </Link>
         <nav className={`nav-links ${open ? 'is-open' : ''}`} aria-label="Main navigation">
           <Link href="/" className={isHome ? 'active' : ''} onClick={close} data-testid="link-home">Shop all</Link>
+          <Link href="/admin" className="admin-nav-link" onClick={close} data-testid="link-admin">Order desk</Link>
           <a href="/#catalog" onClick={close} data-testid="link-catalog">Beauty edit</a>
           <a href="/#our-promise" onClick={close} data-testid="link-our-promise">Our promise</a>
         </nav>
@@ -258,7 +260,7 @@ function Checkout() {
       onError: () => setErrorText('Your order could not be placed just yet. Your bag is safe — please check your details and try again.'),
     });
   };
-  if (receipt) return <Shell><main className="page-wrap"><section className="receipt" data-testid="status-order-success"><div className="receipt-check"><Check size={30}/></div><span className="eyebrow">Order received</span><h1>We’ll take it from here.</h1><p>Thank you, {fields.customerName}. Your cash-on-delivery order is confirmed. We’ll be in touch to get your parcel on its way.</p><div className="receipt-code" data-testid="text-order-number">Order {receipt.orderNumber}</div><div className="receipt-total" data-testid="text-order-total">{money(receipt.total)} <span style={{fontSize:12,fontWeight:500}}>{receipt.currency}</span></div><p data-testid="text-order-status">Status: {receipt.status}</p><Link href="/" className="button-primary" data-testid="button-order-continue">Back to the shop <ArrowRight size={15}/></Link></section></main></Shell>;
+  if (receipt) return <Shell><main className="page-wrap"><section className="receipt" data-testid="status-order-success"><div className="receipt-check"><Check size={30}/></div><span className="eyebrow">Order received</span><h1>We’ll take it from here.</h1><p>Thank you, {fields.customerName}. Your cash-on-delivery order is in. We’ll confirm it soon and be in touch to get your parcel on its way.</p><div className="receipt-code" data-testid="text-order-number">Order {receipt.orderNumber}</div><div className="receipt-total" data-testid="text-order-total">{money(receipt.total)} <span style={{fontSize:12,fontWeight:500}}>{receipt.currency}</span></div><p data-testid="text-order-status">Status: {receipt.status}</p><Link href="/" className="button-primary" data-testid="button-order-continue">Back to the shop <ArrowRight size={15}/></Link></section></main></Shell>;
   if (!cart.items.length) return <Shell><main className="page-wrap"><div className="empty-state"><div className="empty-illustration"><ShoppingBag size={34}/></div><h1>Your bag is empty.</h1><p>Add a few everyday favorites first, then we’ll help you get them home.</p><Link href="/" className="button-primary" data-testid="button-checkout-empty-shop">Browse beauty finds <ArrowRight size={15}/></Link></div></main></Shell>;
   if (isLoading) return <Shell><main className="page-wrap"><div className="state-box" data-testid="status-checkout-loading">Preparing your order summary...</div></main></Shell>;
   if (isError || !products) return <Shell><main className="page-wrap"><div className="status-error" data-testid="status-checkout-products-error"><strong>We can’t confirm your order details yet.</strong><p>Your saved bag is safe. Please retry before checking out.</p><button className="button-outline" onClick={() => void refetch()} data-testid="button-retry-checkout-products">Try again</button></div></main></Shell>;
@@ -296,6 +298,7 @@ function Router() {
         <Route path="/product/:id" component={ProductDetail} />
         <Route path="/cart" component={Cart} />
         <Route path="/checkout" component={Checkout} />
+        <Route path="/admin" component={AdminPage} />
         <Route component={NotFound} />
       </Switch>
     </RoutedErrorBoundary>
