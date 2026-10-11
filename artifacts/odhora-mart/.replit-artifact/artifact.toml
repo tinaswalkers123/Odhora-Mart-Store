@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Odhora Mart"
+description = "A mobile-friendly cosmetics and beauty storefront with product browsing, product details, a shopping cart, and cash-on-delivery checkout."
+version = "1.0.0"
+id = "artifacts/odhora-mart"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19067
+
+[services.development]
+run = "pnpm --filter @workspace/odhora-mart run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/odhora-mart", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/odhora-mart/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19067"
+BASE_PATH = "/"
