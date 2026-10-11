@@ -132,6 +132,7 @@ export const AdminOrderStatus = {
   confirmed: 'confirmed',
   shipped: 'shipped',
   delivered: 'delivered',
+  cancelled: 'cancelled',
 } as const;
 
 export interface AdminOrder {
@@ -162,6 +163,7 @@ export const AdminOrderStatusInputStatus = {
   confirmed: 'confirmed',
   shipped: 'shipped',
   delivered: 'delivered',
+  cancelled: 'cancelled',
 } as const;
 
 export interface AdminOrderStatusInput {

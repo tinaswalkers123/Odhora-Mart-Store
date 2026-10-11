@@ -1,25 +1,38 @@
-import { useMemo, useState, type FormEvent } from 'react';
+import { useMemo, useState, type FormEvent, type MouseEvent } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { Link } from 'wouter';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
 import {
   getGetAdminSessionQueryKey,
   getListAdminOrdersQueryKey,
   useCreateAdminSession,
+  useDeleteAdminOrder,
   useDeleteAdminSession,
   useGetAdminSession,
   useListAdminOrders,
   useUpdateAdminOrderStatus,
 } from '@workspace/api-client-react';
 import type { AdminOrder, AdminOrderStatus } from '@workspace/api-client-react';
-import { ArrowLeft, ArrowRight, ArrowUpRight, Check, Clock3, LockKeyhole, LogOut, PackageCheck, RefreshCw, Search, ShieldCheck, Truck } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, Check, Clock3, LockKeyhole, LogOut, PackageCheck, RefreshCw, Search, ShieldCheck, Trash2, Truck } from 'lucide-react';
 import './admin.css';
 
-const statuses: AdminOrderStatus[] = ['pending', 'confirmed', 'shipped', 'delivered'];
+const statuses: AdminOrderStatus[] = ['pending', 'confirmed', 'shipped', 'delivered', 'cancelled'];
+const orderValueStatuses = new Set<AdminOrderStatus>(['pending', 'confirmed', 'shipped', 'delivered']);
 const statusNames: Record<AdminOrderStatus, string> = {
   pending: 'Pending',
   confirmed: 'Confirmed',
   shipped: 'Shipped',
   delivered: 'Delivered',
+  cancelled: 'Cancelled',
 };
 
 function errorMessage(error: unknown, fallback: string) {
@@ -94,10 +107,12 @@ function AccessPage({
   );
 }
 
-function OrderCard({ order, onStatusChange, isUpdating }: {
+function OrderCard({ order, onStatusChange, onRequestDelete, isUpdating, isDeleting }: {
   order: AdminOrder;
   onStatusChange: (order: AdminOrder, status: AdminOrderStatus) => void;
+  onRequestDelete: (order: AdminOrder) => void;
   isUpdating: boolean;
+  isDeleting: boolean;
 }) {
   return (
     <article className="admin-order-card" data-testid={`card-admin-order-${order.id}`}>
@@ -139,7 +154,7 @@ function OrderCard({ order, onStatusChange, isUpdating }: {
           <span>Update progress</span>
           <select
             value={order.status}
-            disabled={isUpdating}
+            disabled={isUpdating || isDeleting}
             onChange={(event) => onStatusChange(order, event.target.value as AdminOrderStatus)}
             aria-label={`Update status for order ${order.orderNumber}`}
             data-testid={`select-admin-order-status-${order.id}`}
@@ -148,12 +163,21 @@ function OrderCard({ order, onStatusChange, isUpdating }: {
           </select>
           {isUpdating ? <RefreshCw size={14} className="admin-spin" /> : <ArrowUpRight size={14} />}
         </label>
+        <button
+          type="button"
+          className="admin-delete-button"
+          disabled={isUpdating || isDeleting}
+          onClick={() => onRequestDelete(order)}
+          data-testid={`button-delete-order-${order.id}`}
+        >
+          <Trash2 size={14} /> Delete order
+        </button>
       </div>
     </article>
   );
 }
 
-function OrdersDashboard({ orders, isLoading, isError, error, refetch, onLogout, logoutPending, onStatusChange, updatingId, updateError }: {
+function OrdersDashboard({ orders, isLoading, isError, error, refetch, onLogout, logoutPending, onStatusChange, updatingId, updateError, onDeleteOrder, isDeleting }: {
   orders: AdminOrder[] | undefined;
   isLoading: boolean;
   isError: boolean;
@@ -164,16 +188,29 @@ function OrdersDashboard({ orders, isLoading, isError, error, refetch, onLogout,
   onStatusChange: (order: AdminOrder, status: AdminOrderStatus) => void;
   updatingId: number | null;
   updateError: string;
+  onDeleteOrder: (order: AdminOrder) => Promise<boolean>;
+  isDeleting: boolean;
 }) {
   const [filter, setFilter] = useState<'all' | AdminOrderStatus>('all');
   const [search, setSearch] = useState('');
+  const [orderToDelete, setOrderToDelete] = useState<AdminOrder | null>(null);
   const sortedOrders = useMemo(() => [...(orders || [])].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()), [orders]);
   const filteredOrders = sortedOrders.filter((order) => (
     (filter === 'all' || order.status === filter)
     && `${order.orderNumber} ${order.customerName} ${order.phone}`.toLowerCase().includes(search.toLowerCase().trim())
   ));
   const pendingCount = (orders || []).filter((order) => order.status === 'pending').length;
-  const revenue = (orders || []).reduce((sum, order) => sum + order.total, 0);
+  const revenue = (orders || []).reduce(
+    (sum, order) => orderValueStatuses.has(order.status) ? sum + order.total : sum,
+    0,
+  );
+
+  const confirmDelete = async (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    if (!orderToDelete) return;
+    await onDeleteOrder(orderToDelete);
+    setOrderToDelete(null);
+  };
 
   return (
     <main className="admin-dashboard">
@@ -189,7 +226,7 @@ function OrdersDashboard({ orders, isLoading, isError, error, refetch, onLogout,
         <section className="admin-summary" aria-label="Order overview">
           <div className="admin-stat"><span>ALL ORDERS</span><strong>{isLoading ? '—' : orders?.length ?? 0}</strong><small>Since opening the shop</small></div>
           <div className="admin-stat admin-stat-pending"><span>NEEDS A LOOK</span><strong>{isLoading ? '—' : pendingCount}</strong><small>Waiting to be confirmed</small></div>
-          <div className="admin-stat"><span>ORDER VALUE</span><strong>{isLoading ? '—' : `৳${new Intl.NumberFormat('en-BD').format(revenue)}`}</strong><small>Across all orders</small></div>
+          <div className="admin-stat"><span>ORDER VALUE</span><strong>{isLoading ? '—' : `৳${new Intl.NumberFormat('en-BD').format(revenue)}`}</strong><small>Excludes cancelled orders</small></div>
           <div className="admin-stat admin-stat-note"><Truck size={20} /><p>Small touches make<br />a lovely delivery.</p></div>
         </section>
         <section className="admin-orders-section">
@@ -215,7 +252,7 @@ function OrdersDashboard({ orders, isLoading, isError, error, refetch, onLogout,
             <div className="admin-orders-empty" data-testid="status-admin-orders-empty"><div className="admin-empty-icon"><PackageCheck size={24} /></div><p className="admin-overline">A FRESH PAGE</p><h3>No orders just yet.</h3><p>When a customer checks out, their order will be waiting here.</p><Link href="/" className="admin-empty-link" data-testid="link-admin-empty-shop">Visit the storefront <ArrowRight size={14} /></Link></div>
           ) : filteredOrders.length ? (
             <div className="admin-order-list" data-testid="list-admin-orders">
-              {filteredOrders.map((order) => <OrderCard key={order.id} order={order} onStatusChange={onStatusChange} isUpdating={updatingId === order.id} />)}
+              {filteredOrders.map((order) => <OrderCard key={order.id} order={order} onStatusChange={onStatusChange} onRequestDelete={setOrderToDelete} isUpdating={updatingId === order.id} isDeleting={isDeleting} />)}
             </div>
           ) : (
             <div className="admin-no-matches" data-testid="status-admin-no-matches"><Search size={20} /><span>No orders match this view.</span><button type="button" onClick={() => { setSearch(''); setFilter('all'); }}>Clear filters</button></div>
@@ -223,6 +260,33 @@ function OrdersDashboard({ orders, isLoading, isError, error, refetch, onLogout,
         </section>
         <footer className="admin-footnote"><Check size={14} /> Order updates are saved securely and reflected in the shop’s records. <span>ODHORA MART · WITH CARE</span></footer>
       </div>
+      <AlertDialog
+        open={orderToDelete !== null}
+        onOpenChange={(open) => {
+          if (!open && !isDeleting) setOrderToDelete(null);
+        }}
+      >
+        <AlertDialogContent className="admin-delete-dialog" data-testid="dialog-delete-order-confirm">
+          <AlertDialogHeader className="admin-delete-dialog-header">
+            <span className="admin-delete-dialog-icon"><Trash2 size={18} /></span>
+            <AlertDialogTitle>Delete {orderToDelete?.orderNumber ?? 'this order'}?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This permanently removes the order and its customer details. This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter className="admin-delete-dialog-footer">
+            <AlertDialogCancel disabled={isDeleting} className="admin-delete-cancel">Keep order</AlertDialogCancel>
+            <AlertDialogAction
+              disabled={isDeleting}
+              onClick={confirmDelete}
+              className="admin-delete-confirm"
+              data-testid="button-confirm-delete-order"
+            >
+              {isDeleting ? 'Deleting…' : 'Delete order'}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </main>
   );
 }
@@ -234,6 +298,7 @@ export default function AdminPage() {
   const sessionQuery = useGetAdminSession({ query: { queryKey: sessionKey, retry: false, staleTime: 0 } });
   const ordersQuery = useListAdminOrders({ query: { queryKey: ordersKey, enabled: sessionQuery.data?.authenticated === true, retry: false } });
   const createSession = useCreateAdminSession();
+  const deleteOrder = useDeleteAdminOrder();
   const deleteSession = useDeleteAdminSession();
   const updateOrder = useUpdateAdminOrderStatus();
   const [loginError, setLoginError] = useState('');
@@ -278,6 +343,18 @@ export default function AdminPage() {
     });
   };
 
+  const removeOrder = async (order: AdminOrder): Promise<boolean> => {
+    setUpdateError('');
+    try {
+      await deleteOrder.mutateAsync({ id: order.id });
+      await queryClient.invalidateQueries({ queryKey: ordersKey });
+      return true;
+    } catch (error) {
+      setUpdateError(errorMessage(error, 'We couldn’t delete this order. Please try again.'));
+      return false;
+    }
+  };
+
   if (sessionQuery.isLoading) {
     return <main className="admin-login-page"><div className="admin-loading-card" data-testid="status-admin-session-loading"><div className="admin-loading-mark" /><div className="admin-skeleton-line" /><div className="admin-skeleton-line short" /><div className="admin-skeleton-input" /></div></main>;
   }
@@ -305,6 +382,8 @@ export default function AdminPage() {
       onStatusChange={changeStatus}
       updatingId={updateOrder.isPending ? updateOrder.variables?.id ?? null : null}
       updateError={updateError}
+      onDeleteOrder={removeOrder}
+      isDeleting={deleteOrder.isPending}
     />
   );
 }

@@ -4,6 +4,7 @@ import { db, ordersTable } from "@workspace/db";
 import {
   CreateAdminSessionBody,
   CreateAdminSessionResponse,
+  DeleteAdminOrderParams,
   GetAdminSessionResponse,
   ListAdminOrdersResponse,
   UpdateAdminOrderStatusBody,
@@ -80,6 +81,31 @@ router.get("/admin/orders", async (req, res): Promise<void> => {
     createdAt: order.createdAt.toISOString(),
   }));
   res.json(ListAdminOrdersResponse.parse(response));
+});
+
+router.delete("/admin/orders/:id", async (req, res): Promise<void> => {
+  if (!isAdminRequest(req)) {
+    res.status(401).json({ error: "Admin session required." });
+    return;
+  }
+
+  const params = DeleteAdminOrderParams.safeParse(req.params);
+  if (!params.success) {
+    res.status(400).json({ error: params.error.message });
+    return;
+  }
+
+  const [deletedOrder] = await db
+    .delete(ordersTable)
+    .where(eq(ordersTable.id, params.data.id))
+    .returning({ id: ordersTable.id });
+
+  if (!deletedOrder) {
+    res.status(404).json({ error: "Order not found." });
+    return;
+  }
+
+  res.sendStatus(204);
 });
 
 router.patch("/admin/orders/:id", async (req, res): Promise<void> => {

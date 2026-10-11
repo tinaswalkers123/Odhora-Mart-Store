@@ -155,7 +155,7 @@ export const ListAdminOrdersResponseItem = zod.object({
 })),
   "total": zod.number().int(),
   "currency": zod.enum(['BDT']),
-  "status": zod.enum(['pending', 'confirmed', 'shipped', 'delivered']),
+  "status": zod.enum(['pending', 'confirmed', 'shipped', 'delivered', 'cancelled']),
   "createdAt": zod.coerce.date()
 })
 export const ListAdminOrdersResponse = zod.array(ListAdminOrdersResponseItem)
@@ -172,7 +172,7 @@ export const UpdateAdminOrderStatusParams = zod.object({
 })
 
 export const UpdateAdminOrderStatusBody = zod.object({
-  "status": zod.enum(['pending', 'confirmed', 'shipped', 'delivered'])
+  "status": zod.enum(['pending', 'confirmed', 'shipped', 'delivered', 'cancelled'])
 })
 
 export const UpdateAdminOrderStatusResponse = zod.object({
@@ -193,8 +193,21 @@ export const UpdateAdminOrderStatusResponse = zod.object({
 })),
   "total": zod.number().int(),
   "currency": zod.enum(['BDT']),
-  "status": zod.enum(['pending', 'confirmed', 'shipped', 'delivered']),
+  "status": zod.enum(['pending', 'confirmed', 'shipped', 'delivered', 'cancelled']),
   "createdAt": zod.coerce.date()
 })
+
+
+/**
+ * @summary Permanently delete a customer order
+ */
+
+
+
+export const DeleteAdminOrderParams = zod.object({
+  "id": zod.coerce.number().int().min(1)
+})
+
+export const DeleteAdminOrderResponse = zod.void()
 
 

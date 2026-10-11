@@ -14,4 +14,5 @@ export const AdminOrderStatus = {
   confirmed: 'confirmed',
   shipped: 'shipped',
   delivered: 'delivered',
+  cancelled: 'cancelled',
 } as const;

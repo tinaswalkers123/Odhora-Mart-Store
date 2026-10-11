@@ -115,6 +115,7 @@
 .status-confirmed { color: #9a4566; background: #fae8ef; }
 .status-shipped { color: #566f9a; background: #edf2fb; }
 .status-delivered { color: #4e8062; background: #eaf4ed; }
+.status-cancelled { color: #984653; background: #fbe9e9; }
 .admin-order-body { display: grid; grid-template-columns: .85fr 1.25fr 1.2fr; gap: 24px; padding: 18px; }
 .admin-section-label { display: block; margin-bottom: 8px; color: #a18892; font-size: 8px; font-weight: 800; letter-spacing: .12em; }
 .admin-customer h2 { margin: 0 0 7px; color: #45303a; font: 750 14px/1.25 'Manrope',sans-serif; letter-spacing: -.02em; }
@@ -138,6 +139,19 @@
 .admin-status-control select { min-width: 115px; height: 32px; padding: 0 26px 0 9px; border: 1px solid #ead7df; border-radius: 3px; outline: 0; color: #684a58; background: #fff; font-size: 10px; font-weight: 700; cursor: pointer; }
 .admin-status-control select:focus { border-color: #c53670; }
 .admin-status-control select:disabled { opacity: .6; cursor: wait; }
+.admin-delete-button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 32px; padding: 0 10px; border: 1px solid #efd3d9; border-radius: 3px; color: #a3485a; background: #fff; font-size: 9px; font-weight: 700; cursor: pointer; transition: background .16s, border-color .16s, color .16s; }
+.admin-delete-button:hover:not(:disabled) { border-color: #d79aa7; color: #8c2d43; background: #fff3f4; }
+.admin-delete-button:disabled { opacity: .5; cursor: wait; }
+.admin-delete-dialog { width: calc(100vw - 32px); max-width: 420px; border: 1px solid #eddde3; border-radius: 8px; color: #392832; background: #fffdfc; }
+.admin-delete-dialog-header { text-align: left; }
+.admin-delete-dialog-icon { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; color: #b23d59; background: #fbe9ed; }
+.admin-delete-dialog h2 { margin: 0; color: #392832; font: 800 19px/1.2 'Manrope',sans-serif; letter-spacing: -.04em; }
+.admin-delete-dialog p { color: #806d75; line-height: 1.6; }
+.admin-delete-dialog-footer { flex-direction: row; gap: 8px; margin-top: 8px; }
+.admin-delete-cancel { min-height: 40px; margin: 0 !important; border-color: #ead9df !important; border-radius: 4px !important; color: #684f5a !important; background: #fff !important; font-size: 11px !important; }
+.admin-delete-confirm { min-height: 40px; border: 0 !important; border-radius: 4px !important; color: #fff !important; background: #a92c5e !important; font-size: 11px !important; }
+.admin-delete-confirm:hover:not(:disabled) { background: #8d234d !important; }
+.admin-delete-confirm:disabled, .admin-delete-cancel:disabled { opacity: .65; cursor: wait; }
 .admin-spin { animation: admin-rotate .9s linear infinite; }
 @keyframes admin-rotate { to { transform: rotate(360deg); } }
 .admin-update-alert { margin: 0 0 13px; }
@@ -201,6 +215,7 @@
   .admin-status-control { width: 100%; }
   .admin-status-control > span { margin-right: auto; }
   .admin-status-control select { flex: 1; }
+  .admin-delete-button { align-self: flex-end; }
   .admin-footnote { align-items: flex-start; line-height: 1.5; }
   .admin-footnote span { display: none; }
 }
