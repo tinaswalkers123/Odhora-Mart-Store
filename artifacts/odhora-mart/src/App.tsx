@@ -92,7 +92,7 @@ function Footer() {
   </footer>;
 }
 function Shell({ children }: { children: ReactNode }) {
-  return <CartProvider><div className="site-shell"><Header/>{children}<Footer/></div></CartProvider>;
+  return <div className="site-shell"><Header/>{children}<Footer/></div>;
 }
 function LoadingGrid() {
   return <div className="product-grid" aria-label="Loading products" data-testid="status-loading-products">
@@ -312,7 +312,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
-          <Router />
+          <CartProvider>
+            <Router />
+          </CartProvider>
         </WouterRouter>
         <Toaster />
       </TooltipProvider>
