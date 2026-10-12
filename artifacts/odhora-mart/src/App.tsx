@@ -9,6 +9,7 @@ import { Route, Switch, useLocation, Router as WouterRouter, Link, useRoute } fr
 import { useCreateOrder, useGetProduct, useListProducts, getGetProductQueryKey, getListProductsQueryKey } from '@workspace/api-client-react';
 import type { Product, OrderReceipt } from '@workspace/api-client-react';
 import { bengaliProductName, orderStatusLabels } from '@/lib/bengali';
+import { getProductCategoryGroup, productCategoryGroups } from '@/lib/product-categories';
 import { ArrowLeft, ArrowRight, BadgeCheck, Check, ChevronRight, CreditCard, Flower2, Heart, Leaf, Menu, Minus, PackageCheck, Plus, Search, ShieldCheck, ShoppingBag, Sparkles, Star, Trash2, Truck, X } from 'lucide-react';
 import { useEffect } from 'react';
 
@@ -126,9 +127,16 @@ function ProductCard({ product }: { product: Product }) {
 function Home() {
   const { data: products, isLoading, isError, refetch } = useListProducts({ query: { queryKey: getListProductsQueryKey() } });
   const [category, setCategory] = useState('সব');
+  const [subcategory, setSubcategory] = useState('সব');
   const [search, setSearch] = useState('');
-  const categories = useMemo(() => ['সব', ...Array.from(new Set((products || []).map((p) => p.category).filter(Boolean)))], [products]);
-  const filtered = (products || []).filter((p) => (category === 'সব' || p.category === category) && `${p.name} ${p.brand} ${p.category}`.toLowerCase().includes(search.toLowerCase()));
+  const activeCategory = productCategoryGroups.find((group) => group.label === category);
+  const filtered = useMemo(() => (products || []).filter((product) => {
+    const productGroup = getProductCategoryGroup(product.category);
+    const matchesCategory = category === 'সব' || productGroup === category;
+    const matchesSubcategory = subcategory === 'সব' || product.category === subcategory;
+    const searchText = `${product.name} ${product.brand} ${product.category} ${product.description}`.toLowerCase();
+    return matchesCategory && matchesSubcategory && searchText.includes(search.toLowerCase());
+  }), [products, category, subcategory, search]);
   return <Shell>
     <main>
       <section className="hero" aria-label="ওধোরা মার্টে স্বাগতম">
@@ -150,8 +158,17 @@ function Home() {
       </section>
       <section className="page-wrap catalog-section" id="catalog">
         <div className="section-head"><div><span className="eyebrow">আপনার রুটিন, নতুন করে সাজানো</span><h2>ছোট ছোট বিউটি জিনিস</h2><p>প্রতিদিনের ভালো প্রোডাক্ট, আপনার কথা ভেবেই বাছাই করা</p></div></div>
-        {products?.length ? <div className="filter-row" aria-label="পণ্য ফিল্টার">
-          {categories.map((item) => <button key={item} className={`filter-chip ${category === item ? 'selected' : ''}`} onClick={() => setCategory(item)} type="button" data-testid={`filter-category-${item}`}>{item}</button>)}
+        {products?.length ? <div className="catalog-filter-toolbar">
+          <div className="catalog-category-filters">
+            <div className="filter-row" role="group" aria-label="প্রধান পণ্য ক্যাটাগরি">
+              <button className={`filter-chip ${category === 'সব' ? 'selected' : ''}`} onClick={() => { setCategory('সব'); setSubcategory('সব'); }} type="button" data-testid="filter-category-all">সব</button>
+              {productCategoryGroups.map((group) => <button key={group.label} className={`filter-chip ${category === group.label ? 'selected' : ''}`} onClick={() => { setCategory(group.label); setSubcategory('সব'); }} type="button" data-testid={`filter-category-${group.label}`}>{group.label}</button>)}
+            </div>
+            {activeCategory && <div className="filter-row subcategory-filter-row" role="group" aria-label={`${activeCategory.label} উপক্যাটাগরি`}>
+              <button className={`filter-chip ${subcategory === 'সব' ? 'selected' : ''}`} onClick={() => setSubcategory('সব')} type="button" data-testid="filter-subcategory-all">সব</button>
+              {activeCategory.categories.map((item) => <button key={item} className={`filter-chip ${subcategory === item ? 'selected' : ''}`} onClick={() => setSubcategory(item)} type="button" data-testid={`filter-subcategory-${item}`}>{item}</button>)}
+            </div>}
+          </div>
           <label className="search-box"><Search size={15}/><input type="search" placeholder="পছন্দের পণ্য খুঁজুন..." value={search} onChange={(e) => setSearch(e.target.value)} aria-label="পণ্য খুঁজুন" data-testid="input-product-search"/></label>
         </div> : null}
         {isLoading ? <LoadingGrid/> : isError ? <div className="status-error" data-testid="status-products-error"><strong>এই মুহূর্তে পণ্যগুলো লোড করা যাচ্ছে না।</strong><p>একটু পরে আবার চেষ্টা করুন।</p><button className="button-outline" onClick={() => void refetch()} data-testid="button-retry-products">আবার চেষ্টা করুন</button></div> : products?.length ? filtered.length ? <div className="product-grid" data-testid="grid-products">{filtered.map((product) => <ProductCard key={product.id} product={product}/>)}</div> : <div className="state-box" data-testid="status-no-matching-products">এই খোঁজে কোনো পণ্য পাওয়া যায়নি। অন্য শব্দ বা ক্যাটাগরি দিয়ে চেষ্টা করুন।</div> : <div className="state-box" data-testid="status-empty-products"><Sparkles size={28}/><p>আমরা পণ্যগুলো প্রস্তুত করছি। শিগগিরই আবার দেখুন।</p></div>}
