@@ -1,0 +1,74 @@
+Please change all the visible text on the website from English to Bengali. Here are the exact translations to use:
+
+Top banner:
+"A LITTLE CARE, DELIVERED TO YOUR DOOR — CASH ON DELIVERY AVAILABLE" → "একটু যত্ন, আপনার দরজায় — ক্যাশ অন ডেলিভারি সুবিধা"
+
+Navigation menu:
+"Shop all" → "সব প্রোডাক্ট"
+"Beauty edit" → "বিউটি এডিট"
+"Our promise" → "আমাদের প্রতিশ্রুতি"
+"Order desk" → "অর্ডার দেখুন"
+"Bag" → "কার্ট"
+
+Homepage:
+"Good skin days start right here" → "সুন্দর ত্বকের দিন শুরু হোক এখানেই"
+"Your everyday beauty favorites, thoughtfully picked and delivered with care. Find the little things that make you feel like you." → "আপনার প্রতিদিনের প্রিয় বিউটি প্রোডাক্ট, যত্ন নিয়ে বাছাই করা এবং আপনার দরজায় পৌঁছে দেওয়া। ছোট ছোট জিনিসেই খুঁজে নিন নিজের আনন্দ।"
+"Shop the edit" → "কেনাকাটা করুন"
+"Delivered with care" → "যত্ন নিয়ে ডেলিভারি"
+"Across Bangladesh" → "সারা বাংলাদেশে"
+"Only the good stuff" → "শুধু ভালো প্রোডাক্ট"
+"Picked for your routine" → "আপনার রুটিনের জন্য বাছাই করা"
+"Pay when it arrives" → "পণ্য হাতে পেয়ে পেমেন্ট"
+"Easy cash on delivery" → "সহজ ক্যাশ অন ডেলিভারি"
+"Your routine, refreshed" → "আপনার রুটিন, নতুন করে সাজানো"
+"Little beauty things" → "ছোট ছোট বিউটি জিনিস"
+"Good everyday finds, chosen with you in mind" → "প্রতিদিনের ভালো প্রোডাক্ট, আপনার কথা ভেবেই বাছাই করা"
+
+Product page:
+"Add to cart" → "কার্টে যোগ করুন"
+"Buy now" → "এখনই কিনুন"
+
+Cart page:
+"Your bag" → "আপনার কার্ট"
+"Subtotal" → "সাবটোটাল"
+"Delivery" → "ডেলিভারি চার্জ"
+"Estimated total" → "সম্ভাব্য মোট"
+"Continue to checkout" → "চেকআউটে যান"
+"Keep browsing" → "আরও দেখুন"
+"Your Shopping Bag is Empty" → "আপনার কার্ট খালি"
+"START SHOPPING" → "কেনাকাটা শুরু করুন"
+
+Checkout page:
+"Cash on delivery" → "ক্যাশ অন ডেলিভারি"
+"Place order" → "অর্ডার করুন"
+"Full name" → "পুরো নাম"
+"Phone number" → "মোবাইল নম্বর"
+"Delivery address" → "ডেলিভারির ঠিকানা"
+
+Footer:
+"Everyday beauty, made a little easier." → "প্রতিদিনের সৌন্দর্য, আরেকটু সহজ করে।"
+"Shop" → "কেনাকাটা"
+"Get in touch" → "যোগাযোগ করুন"
+
+Admin order desk:
+"Order desk" → "অর্ডার দেখুন"
+"Every order, from first hello to front door." → "প্রতিটি অর্ডার, প্রথম কথা থেকে আপনার দরজা পর্যন্ত।"
+"ALL ORDERS" → "সব অর্ডার"
+"NEEDS A LOOK" → "দেখা প্রয়োজন"
+"ORDER VALUE" → "মোট অর্ডার মূল্য"
+"Recent orders" → "সাম্প্রতিক অর্ডার"
+"All orders" → "সব অর্ডার"
+"Pending" → "অপেক্ষমাণ"
+"Confirmed" → "নিশ্চিত"
+"Shipped" → "পাঠানো হয়েছে"
+"Delivered" → "পৌঁছে দেওয়া হয়েছে"
+"Cancelled" → "বাতিল"
+"Delete order" → "অর্ডার ডিলিট করুন"
+"Update progress" → "অবস্থা আপডেট করুন"
+"CUSTOMER" → "কাস্টমার"
+"DELIVER TO" → "ডেলিভারি ঠিকানা"
+"IN THE PARCEL" → "পার্সেলে"
+"DELIVERY NOTE" → "ডেলিভারি নোট"
+"ORDER TOTAL" → "মোট মূল্য"
+
+Keep the fonts and layout the same, just change the text. Make sure Bengali text displays properly without any broken characters.

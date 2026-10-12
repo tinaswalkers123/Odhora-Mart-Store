@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @plugin "@tailwindcss/typography";
@@ -113,9 +113,9 @@
   --chart-3: 159 27% 52%;
   --chart-4: 276 28% 64%;
   --chart-5: 41 76% 66%;
-  --app-font-sans: 'DM Sans', sans-serif;
-  --app-font-serif: 'Manrope', sans-serif;
-  --app-font-mono: 'DM Sans', monospace;
+  --app-font-sans: 'DM Sans', 'Noto Sans Bengali', sans-serif;
+  --app-font-serif: 'Manrope', 'Noto Sans Bengali', sans-serif;
+  --app-font-mono: 'DM Sans', 'Noto Sans Bengali', monospace;
   --radius: 0.5rem; /* 8px */
   --shadow-2xs: 0px 2px 0px 0px hsl(337 40% 35% / 0);
   --shadow-xs: 0px 2px 0px 0px hsl(337 40% 35% / 0);
@@ -275,7 +275,7 @@
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; }
+body { margin: 0; background: var(--cream); color: var(--ink); font-family: 'DM Sans', 'Noto Sans Bengali', sans-serif; }
 button, input, textarea, select { font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
 a { color: inherit; text-decoration: none; }
@@ -287,7 +287,7 @@ button { cursor: pointer; }
 .brand { display: flex; align-items: center; gap: 10px; min-width: 205px; }
 .brand-mark { width: 37px; height: 37px; border-radius: 50% 50% 50% 10%; display: grid; place-items: center; color: #fff; background: var(--rose); transform: rotate(-8deg); }
 .brand-mark svg { transform: rotate(8deg); }
-.brand-name { font: 800 20px/1 'Manrope', sans-serif; letter-spacing: -.06em; }
+.brand-name { font: 800 20px/1 'Manrope', 'Noto Sans Bengali', sans-serif; letter-spacing: -.06em; }
 .brand-name span { color: var(--rose); }
 .nav-links { display: flex; align-items: center; gap: 25px; font-size: 13px; font-weight: 600; color: #725e67; flex: 1; }
 .nav-links a:hover, .nav-links a.active { color: var(--rose); }
@@ -299,7 +299,7 @@ button { cursor: pointer; }
 .hero { position:relative; overflow:hidden; margin: 25px auto 0; max-width: 1240px; min-height: 430px; border-radius: 12px 100px 12px 12px; background:#f7e7eb; display:grid; grid-template-columns:1fr .83fr; align-items:center; }
 .hero-copy { padding: 55px 8% 58px 9%; position:relative; z-index:2; }
 .eyebrow { font-size:11px; text-transform:uppercase; letter-spacing:.16em; font-weight:700; color:var(--rose); }
-.hero h1 { font: 800 clamp(42px,5vw,68px)/1.03 'Manrope',sans-serif; letter-spacing:-.065em; margin:18px 0 17px; max-width:540px; }
+.hero h1 { font: 800 clamp(42px,5vw,68px)/1.03 'Manrope','Noto Sans Bengali',sans-serif; letter-spacing:-.065em; margin:18px 0 17px; max-width:540px; }
 .hero h1 em { color:var(--rose); font-style:normal; }
 .hero-copy p { max-width:420px; color:#705a64; line-height:1.75; font-size:15px; margin:0 0 25px; }
 .hero-art { height:100%; min-height:430px; position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden; background:radial-gradient(ellipse at 55% 45%, #fff6f1 0%,#efccd7 56%,#eebdcc 100%); }
@@ -309,7 +309,7 @@ button { cursor: pointer; }
 .beauty-bottle { width:135px;height:240px;border-radius:26px 26px 19px 19px;background:linear-gradient(90deg,#ca7189,#f0b4c4 38%,#f7d8df 68%,#c96380);box-shadow:18px 24px 38px #9c526333;position:relative;display:flex;align-items:center;justify-content:center; }
 .beauty-bottle::before { content:''; position:absolute; width:55px;height:37px;top:-31px;left:40px;border-radius:7px 7px 3px 3px;background:linear-gradient(90deg,#d6a4a7,#f8dbd4,#c9858b); }
 .bottle-label { width:75px;height:93px;background:#fff9f3;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#714955;gap:7px;text-align:center; }
-.bottle-label strong { font:800 11px 'Manrope'; letter-spacing:.05em; }
+.bottle-label strong { font:800 11px 'Manrope','Noto Sans Bengali',sans-serif; letter-spacing:.05em; }
 .bottle-label span { font-size:8px;letter-spacing:.14em; }
 .mini-jar { width:112px;height:94px;background:linear-gradient(110deg,#fff4e9,#edbdc9 56%,#d68ca2);border-radius:12px 12px 24px 24px;box-shadow:12px 20px 25px #9c526322;position:relative;display:grid;place-items:center;color:#714955;font-size:10px;font-weight:700;letter-spacing:.12em; }
 .mini-jar::before { content:'';position:absolute;width:118px;height:19px;top:-14px;left:-3px;border-radius:5px;background:linear-gradient(#ead1c8,#fff1e9); }
@@ -324,7 +324,7 @@ button { cursor: pointer; }
 .service-item strong { display:block;font-size:12px;margin-bottom:3px; }
 .service-item span { font-size:11px;color:#8d7981; }
 .section-head { display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin:22px 0 22px; }
-.section-head h2 { font:800 clamp(25px,3vw,36px)/1.1 'Manrope',sans-serif;letter-spacing:-.05em;margin:9px 0 0; }
+.section-head h2 { font:800 clamp(25px,3vw,36px)/1.1 'Manrope','Noto Sans Bengali',sans-serif;letter-spacing:-.05em;margin:9px 0 0; }
 .section-head p { color:#88747c;font-size:13px;margin:8px 0 0; }
 .catalog-section { padding:6px 0 76px; }
 .filter-row { display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:23px; }
@@ -344,14 +344,14 @@ button { cursor: pointer; }
 .quick-add:hover { background:var(--rose);color:white; }
 .product-info { padding:12px 1px 0; }
 .product-brand { color:#9b7b88;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700; }
-.product-title { display:block;font:700 14px/1.35 'Manrope',sans-serif;margin:6px 0 8px; }
+.product-title { display:block;font:700 14px/1.35 'Manrope','Noto Sans Bengali',sans-serif;margin:6px 0 8px; }
 .product-meta { display:flex;align-items:center;justify-content:space-between; }
 .product-price { color:var(--rose-deep);font-weight:700;font-size:14px; }
 .rating { font-size:11px;color:#846c75;display:flex;align-items:center;gap:4px; }
 .rating svg { color:#c68a3d; }
 .why-section { background:#f4e5e8;padding:58px 0 62px; }
 .why-inner { max-width:1240px;margin:auto;padding:0 26px;display:grid;grid-template-columns:.95fr 1.05fr;align-items:center;gap:8%; }
-.why-copy h2 { font:800 clamp(30px,4vw,46px)/1.1 'Manrope';letter-spacing:-.055em;margin:13px 0; }
+.why-copy h2 { font:800 clamp(30px,4vw,46px)/1.1 'Manrope','Noto Sans Bengali',sans-serif;letter-spacing:-.055em;margin:13px 0; }
 .why-copy p { line-height:1.8;color:#755f68;font-size:14px;max-width:430px; }
 .promise-list { display:grid;grid-template-columns:1fr 1fr;gap:17px; }
 .promise { background:#fffaf8;padding:19px 18px;min-height:105px;border-radius:5px; }
@@ -359,7 +359,7 @@ button { cursor: pointer; }
 .promise strong { display:block;font-size:13px;margin:12px 0 5px; }
 .promise p { font-size:11px;line-height:1.6;color:#88747c;margin:0; }
 .newsletter { max-width:1240px;margin:0 auto;padding:60px 26px;display:flex;justify-content:space-between;align-items:center;gap:24px; }
-.newsletter h2 {font:800 26px 'Manrope';letter-spacing:-.04em;margin:0 0 7px;}
+.newsletter h2 {font:800 26px 'Manrope','Noto Sans Bengali',sans-serif;letter-spacing:-.04em;margin:0 0 7px;}
 .newsletter p {font-size:13px;color:#88747c;margin:0;}
 .newsletter-form {display:flex;max-width:430px;width:100%;border-bottom:1px solid #b997a4;}
 .newsletter-form input {background:none;border:0;outline:0;padding:12px 3px;flex:1;font-size:13px;min-width:0;}
@@ -369,16 +369,16 @@ button { cursor: pointer; }
 .footer .brand-name {color:#fff;}
 .footer-note {color:#dfcbd3;font-size:11px;}
 .footer-links {display:flex;gap:20px;font-size:11px;color:#ead7df;}
-.page-title {font:800 clamp(30px,4vw,44px)/1.1 'Manrope';letter-spacing:-.06em;margin:29px 0 9px;}
+.page-title {font:800 clamp(30px,4vw,44px)/1.1 'Manrope','Noto Sans Bengali',sans-serif;letter-spacing:-.06em;margin:29px 0 9px;}
 .breadcrumbs {font-size:11px;color:#997e89;display:flex;align-items:center;gap:9px;margin-top:22px;}
 .breadcrumbs a:hover {color:var(--rose);}
 .detail-layout {display:grid;grid-template-columns:1fr .9fr;gap:7%;padding:25px 0 75px;align-items:center;}
 .detail-image {aspect-ratio:1;background:#f5e9e8;overflow:hidden;border-radius:7px;display:grid;place-items:center;}
 .detail-image img {width:100%;height:100%;object-fit:cover;}
 .detail-copy {padding:18px 0;}
-.detail-copy h1 {font:800 clamp(30px,4vw,48px)/1.12 'Manrope';letter-spacing:-.06em;margin:12px 0;}
+.detail-copy h1 {font:800 clamp(30px,4vw,48px)/1.12 'Manrope','Noto Sans Bengali',sans-serif;letter-spacing:-.06em;margin:12px 0;}
 .detail-copy .description {color:#78636c;line-height:1.8;font-size:14px;max-width:540px;margin:20px 0;}
-.detail-price {font:800 24px 'Manrope';color:var(--rose-deep);}
+.detail-price {font:800 24px 'Manrope','Noto Sans Bengali',sans-serif;color:var(--rose-deep);}
 .quantity-control {display:flex;align-items:center;border:1px solid var(--line);height:46px;border-radius:4px;width:max-content;}
 .quantity-control button {width:42px;height:44px;background:none;border:0;color:var(--ink);display:grid;place-items:center;}
 .quantity-control span {min-width:28px;text-align:center;font-size:13px;font-weight:700;}
@@ -391,20 +391,20 @@ button { cursor: pointer; }
 .cart-line {display:grid;grid-template-columns:92px 1fr auto;gap:18px;padding:18px 0;border-bottom:1px solid var(--line);align-items:center;}
 .cart-thumb {width:92px;height:102px;object-fit:cover;background:#f5e9e8;border-radius:4px;}
 .cart-thumb img,.detail-image img {width:100%;height:100%;object-fit:cover;}
-.cart-product-name {font:700 15px 'Manrope';margin:0 0 6px;}
+.cart-product-name {font:700 15px 'Manrope','Noto Sans Bengali',sans-serif;margin:0 0 6px;}
 .cart-product-brand {color:#9b7b88;font-size:10px;text-transform:uppercase;letter-spacing:.12em;}
 .cart-line-price {font-size:13px;color:#846c75;margin-top:8px;}
 .cart-line-right {display:flex;align-items:center;gap:18px;}
 .remove-item {border:0;background:none;color:#a98492;padding:8px;}
 .summary-card {background:#fff;border:1px solid var(--line);padding:23px;border-radius:5px;position:sticky;top:100px;}
-.summary-card h2 {font:800 19px 'Manrope';margin:0 0 20px;}
+.summary-card h2 {font:800 19px 'Manrope','Noto Sans Bengali',sans-serif;margin:0 0 20px;}
 .summary-row {display:flex;justify-content:space-between;font-size:13px;padding:10px 0;color:#78636c;}
 .summary-row.total {border-top:1px solid var(--line);font-weight:800;color:var(--ink);font-size:15px;margin-top:7px;padding-top:16px;}
 .summary-note {background:#fcf2f5;padding:12px;font-size:11px;line-height:1.6;color:#805c6b;margin:14px 0 17px;}
 .summary-card .button-primary {width:100%;}
 .empty-state {text-align:center;max-width:420px;margin:80px auto;padding:10px 20px 90px;}
 .empty-illustration {margin:0 auto 22px;width:90px;height:90px;display:grid;place-items:center;background:#f7e8ed;color:var(--rose);border-radius:50%;}
-.empty-state h1 {font:800 28px 'Manrope';letter-spacing:-.05em;margin:0 0 10px;}
+.empty-state h1 {font:800 28px 'Manrope','Noto Sans Bengali',sans-serif;letter-spacing:-.05em;margin:0 0 10px;}
 .empty-state p {font-size:13px;color:#806d75;line-height:1.7;margin:0 0 23px;}
 .checkout-layout {display:grid;grid-template-columns:1fr 380px;gap:48px;padding:17px 0 75px;align-items:start;}
 .checkout-form {display:grid;grid-template-columns:1fr 1fr;gap:16px;}
@@ -420,10 +420,10 @@ button { cursor: pointer; }
 .error-message {background:#fff0f1;color:#a03249;border:1px solid #f0cad0;padding:12px 14px;font-size:12px;line-height:1.5;margin-bottom:16px;}
 .receipt {max-width:690px;margin:55px auto 85px;background:#fff;border:1px solid var(--line);padding:42px;text-align:center;border-radius:7px;}
 .receipt-check {width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:#e9f4ee;color:#42885f;margin:0 auto 19px;}
-.receipt h1 {font:800 32px 'Manrope';letter-spacing:-.05em;margin:0 0 10px;}
+.receipt h1 {font:800 32px 'Manrope','Noto Sans Bengali',sans-serif;letter-spacing:-.05em;margin:0 0 10px;}
 .receipt p {font-size:13px;color:#806d75;line-height:1.7;}
-.receipt-code {background:#fbf3f5;padding:15px;margin:22px 0;font:700 16px 'Manrope';letter-spacing:.04em;}
-.receipt-total {font:800 21px 'Manrope';color:var(--rose-deep);}
+.receipt-code {background:#fbf3f5;padding:15px;margin:22px 0;font:700 16px 'Manrope','Noto Sans Bengali',sans-serif;letter-spacing:.04em;}
+.receipt-total {font:800 21px 'Manrope','Noto Sans Bengali',sans-serif;color:var(--rose-deep);}
 .state-box {text-align:center;padding:54px 15px;color:#806d75;}
 .skeleton {background:linear-gradient(90deg,#f1e3e7 25%,#faf2f4 50%,#f1e3e7 75%);background-size:200% 100%;animation:shimmer 1.5s infinite; }
 @keyframes shimmer { to { background-position:-200% 0; } }
@@ -551,4 +551,20 @@ button { cursor: pointer; }
   .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
     inset: -1px;
   }
+}
+
+html[lang="bn"] .announcement,
+html[lang="bn"] .eyebrow,
+html[lang="bn"] .hero h1,
+html[lang="bn"] .bottle-label span,
+html[lang="bn"] .mini-jar,
+html[lang="bn"] .section-head h2,
+html[lang="bn"] .product-badge,
+html[lang="bn"] .why-copy h2,
+html[lang="bn"] .newsletter h2,
+html[lang="bn"] .page-title,
+html[lang="bn"] .detail-copy h1,
+html[lang="bn"] .empty-state h1,
+html[lang="bn"] .receipt h1 {
+  letter-spacing: normal;
 }

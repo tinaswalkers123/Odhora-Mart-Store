@@ -3,106 +3,106 @@ import type { Product } from "@workspace/api-zod";
 export const products: Product[] = [
   {
     id: "rosewater-glow-serum",
-    name: "Rosewater Glow Serum",
+    name: "রোজওয়াটার গ্লো সিরাম",
     brand: "Odhora Beauty",
     description:
-      "A lightweight daily serum with a dewy finish, made to layer comfortably under moisturizer and makeup.",
+      "হালকা দৈনন্দিন সিরাম, যা ত্বকে শিশিরভেজা আভা আনে। ময়েশ্চারাইজার ও মেকআপের নিচে আরামদায়কভাবে ব্যবহার করা যায়।",
     price: 890,
-    category: "Skincare",
+    category: "ত্বকের যত্ন",
     image:
       "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=900&q=85",
     rating: 4.8,
-    badge: "Bestseller",
+    badge: "বেস্টসেলার",
   },
   {
     id: "cloud-soft-moisturizer",
-    name: "Cloud Soft Moisturizer",
+    name: "ক্লাউড সফট ময়েশ্চারাইজার",
     brand: "Odhora Beauty",
     description:
-      "A silky, everyday face cream that leaves skin feeling soft and comfortable without a heavy finish.",
+      "রেশমের মতো নরম, প্রতিদিনের এই ফেস ক্রিম ত্বককে কোমল ও আরামদায়ক রাখে, ভারী ভাব ছাড়াই।",
     price: 760,
-    category: "Skincare",
+    category: "ত্বকের যত্ন",
     image:
       "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=900&q=85",
     rating: 4.7,
-    badge: "Daily essential",
+    badge: "প্রতিদিনের প্রয়োজন",
   },
   {
     id: "petal-tint-lip-oil",
-    name: "Petal Tint Lip Oil",
+    name: "পেটাল টিন্ট লিপ অয়েল",
     brand: "Lumière",
     description:
-      "A glossy lip oil with a sheer rosy tint for a soft, comfortable pop of colour.",
+      "হালকা গোলাপি আভাযুক্ত চকচকে লিপ অয়েল, যা ঠোঁটে নরম ও আরামদায়ক রং এনে দেয়।",
     price: 540,
-    category: "Makeup",
+    category: "মেকআপ",
     image:
       "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=900&q=85",
     rating: 4.9,
-    badge: "Just in",
+    badge: "নতুন এসেছে",
   },
   {
     id: "soft-focus-blush",
-    name: "Soft Focus Cream Blush",
+    name: "সফট ফোকাস ক্রিম ব্লাশ",
     brand: "Lumière",
     description:
-      "A blendable cream blush that adds a fresh wash of colour and a natural-looking finish.",
+      "সহজে মিশে যাওয়া ক্রিম ব্লাশ, যা গালে সতেজ রং ও স্বাভাবিক আভা যোগ করে।",
     price: 680,
-    category: "Makeup",
+    category: "মেকআপ",
     image:
       "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=900&q=85",
     rating: 4.6,
-    badge: "Fan favourite",
+    badge: "সবার পছন্দ",
   },
   {
     id: "silk-drop-hair-oil",
-    name: "Silk Drop Hair Oil",
+    name: "সিল্ক ড্রপ হেয়ার অয়েল",
     brand: "Nourish & Co.",
     description:
-      "A few drops smooth the look of dry ends and add a soft, polished shine to your styling routine.",
+      "কয়েক ফোঁটায় শুষ্ক চুলের ডগা মসৃণ দেখায় এবং চুলের সাজে দেয় কোমল, ঝলমলে আভা।",
     price: 980,
-    category: "Haircare",
+    category: "চুলের যত্ন",
     image:
       "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=900&q=85",
     rating: 4.8,
-    badge: "Bestseller",
+    badge: "বেস্টসেলার",
   },
   {
     id: "botanical-hair-mask",
-    name: "Botanical Hair Mask",
+    name: "বোটানিক্যাল হেয়ার মাস্ক",
     brand: "Nourish & Co.",
     description:
-      "A rich weekly hair treatment that leaves strands feeling softer and easier to comb through.",
+      "সপ্তাহে একবারের সমৃদ্ধ হেয়ার ট্রিটমেন্ট, যা চুলকে করে আরও কোমল ও আঁচড়ানো সহজ।",
     price: 1150,
-    category: "Haircare",
+    category: "চুলের যত্ন",
     image:
       "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=900&q=85",
     rating: 4.7,
-    badge: "Weekly ritual",
+    badge: "সাপ্তাহিক যত্ন",
   },
   {
     id: "soft-musk-eau-de-parfum",
-    name: "Soft Musk Eau de Parfum",
+    name: "সফট মাস্ক ইও দ্য পারফাম",
     brand: "Maison Odhora",
     description:
-      "A gentle, close-to-skin fragrance with warm musk and a clean floral note.",
+      "উষ্ণ মাস্ক ও পরিচ্ছন্ন ফুলেল ঘ্রাণের কোমল পারফিউম—ত্বকের কাছাকাছি মৃদু সুবাস।",
     price: 1890,
-    category: "Fragrance",
+    category: "সুগন্ধি",
     image:
       "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=900&q=85",
     rating: 4.8,
-    badge: "Gift pick",
+    badge: "উপহারের পছন্দ",
   },
   {
     id: "everyday-sunscreen-spf",
-    name: "Everyday Sunscreen SPF 50",
+    name: "প্রতিদিনের সানস্ক্রিন SPF ৫০",
     brand: "Odhora Beauty",
     description:
-      "A lightweight daily sunscreen with a smooth feel designed to sit comfortably under makeup.",
+      "হালকা দৈনন্দিন সানস্ক্রিন, যার মসৃণ অনুভূতি মেকআপের নিচে ব্যবহারেও আরাম দেয়।",
     price: 1250,
-    category: "Skincare",
+    category: "ত্বকের যত্ন",
     image:
       "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=900&q=85",
     rating: 4.9,
-    badge: "Everyday SPF",
+    badge: "প্রতিদিনের SPF",
   },
 ];

@@ -28,7 +28,7 @@
 .admin-login-flower { width: 49px; height: 49px; border-radius: 50% 50% 50% 13%; display: grid; place-items: center; color: #bd3c70; background: #faeaf0; transform: rotate(-8deg); margin-bottom: 27px; }
 .admin-login-flower svg { transform: rotate(8deg); stroke-width: 1.7; }
 .admin-overline { margin: 0; color: #bd3c70; font-size: 9px; line-height: 1.4; letter-spacing: .17em; font-weight: 800; }
-.admin-login-card h1 { margin: 10px 0 10px; font: 800 clamp(30px, 5vw, 37px)/1.08 'Manrope', sans-serif; letter-spacing: -.06em; }
+.admin-login-card h1 { margin: 10px 0 10px; font: 800 clamp(30px, 5vw, 37px)/1.08 'Manrope', 'Noto Sans Bengali', sans-serif; letter-spacing: -.06em; }
 .admin-login-copy { margin: 0; color: #806d75; font-size: 13px; line-height: 1.75; }
 .admin-login-form { margin-top: 26px; display: grid; gap: 9px; }
 .admin-login-form label { color: #624b56; font-weight: 700; font-size: 11px; }
@@ -64,10 +64,10 @@
 
 .admin-dashboard { min-height: 100dvh; background: #fffaf8; color: #392832; }
 .admin-dashboard-header { height: 74px; background: rgba(255,255,255,.94); border-bottom: 1px solid #eddde3; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 0 clamp(20px, 5.3vw, 76px); }
-.admin-brand { display: flex; align-items: center; gap: 10px; font: 800 18px/1 'Manrope',sans-serif; letter-spacing: -.06em; }
+.admin-brand { display: flex; align-items: center; gap: 10px; font: 800 18px/1 'Manrope','Noto Sans Bengali',sans-serif; letter-spacing: -.06em; }
 .admin-brand > span:last-child > span { color: #c53670; }
-.admin-brand small { display: block; margin-top: 7px; color: #987e89; font: 700 8px/1 'DM Sans',sans-serif; letter-spacing: .16em; }
-.admin-brand-mark { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50% 50% 50% 12%; transform: rotate(-8deg); color: #fff; background: #c53670; font: 800 21px/1 'Manrope',sans-serif; letter-spacing: -.08em; }
+.admin-brand small { display: block; margin-top: 7px; color: #987e89; font: 700 8px/1 'DM Sans','Noto Sans Bengali',sans-serif; letter-spacing: .16em; }
+.admin-brand-mark { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50% 50% 50% 12%; transform: rotate(-8deg); color: #fff; background: #c53670; font: 800 21px/1 'Manrope','Noto Sans Bengali',sans-serif; letter-spacing: -.08em; }
 .admin-header-right { display: flex; align-items: center; gap: 22px; }
 .admin-session-indicator { display: flex; align-items: center; gap: 7px; font-size: 8px; letter-spacing: .12em; font-weight: 800; color: #8b727d; }
 .admin-session-indicator i { width: 6px; height: 6px; border-radius: 50%; background: #70a984; box-shadow: 0 0 0 3px #e8f3e9; }
@@ -76,7 +76,7 @@
 .admin-logout:disabled { opacity: .65; cursor: wait; }
 .admin-main { max-width: 1160px; margin: 0 auto; padding: 49px 28px 25px; }
 .admin-heading-row { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 29px; }
-.admin-heading-row h1 { margin: 7px 0 6px; font: 800 clamp(34px, 5vw, 47px)/1 'Manrope',sans-serif; letter-spacing: -.07em; }
+.admin-heading-row h1 { margin: 7px 0 6px; font: 800 clamp(34px, 5vw, 47px)/1 'Manrope','Noto Sans Bengali',sans-serif; letter-spacing: -.07em; }
 .admin-heading-row h1 span { color: #c53670; }
 .admin-subtitle { margin: 0; color: #806d75; font-size: 13px; }
 .admin-today-mark { display: flex; align-items: center; gap: 9px; padding: 11px 14px; color: #a83d65; background: #f9ebef; border: 1px solid #f1dce4; font-size: 8px; line-height: 1.55; letter-spacing: .1em; }
@@ -85,15 +85,15 @@
 .admin-summary { display: grid; grid-template-columns: 1fr 1fr 1fr .95fr; border: 1px solid #eddde3; background: #fff; border-radius: 5px; overflow: hidden; }
 .admin-stat { min-height: 112px; padding: 19px 22px 16px; border-right: 1px solid #f0e3e7; display: flex; flex-direction: column; align-items: flex-start; }
 .admin-stat > span { color: #947d87; font-size: 8px; letter-spacing: .12em; font-weight: 800; }
-.admin-stat > strong { margin-top: 8px; font: 800 24px/1 'Manrope',sans-serif; letter-spacing: -.05em; color: #392832; }
+.admin-stat > strong { margin-top: 8px; font: 800 24px/1 'Manrope','Noto Sans Bengali',sans-serif; letter-spacing: -.05em; color: #392832; }
 .admin-stat > small { margin-top: 6px; color: #9a838d; font-size: 9px; }
 .admin-stat-pending > strong { color: #bd3c70; }
 .admin-stat-note { justify-content: center; align-items: center; flex-direction: row; gap: 12px; border: 0; background: #f9edf1; color: #bd3c70; }
 .admin-stat-note p { margin: 0; color: #80636f; font-size: 11px; line-height: 1.6; font-weight: 600; }
 .admin-orders-section { margin-top: 39px; }
 .admin-orders-title { display: flex; align-items: end; justify-content: space-between; gap: 20px; }
-.admin-orders-title h2 { margin: 7px 0 0; font: 800 25px/1.1 'Manrope',sans-serif; letter-spacing: -.055em; }
-.admin-orders-title h2 span { display: inline-grid; min-width: 24px; height: 24px; padding: 0 5px; margin-left: 5px; vertical-align: 3px; place-items: center; border-radius: 20px; background: #f7e8ed; color: #a8496a; font: 700 10px 'DM Sans',sans-serif; letter-spacing: 0; }
+.admin-orders-title h2 { margin: 7px 0 0; font: 800 25px/1.1 'Manrope','Noto Sans Bengali',sans-serif; letter-spacing: -.055em; }
+.admin-orders-title h2 span { display: inline-grid; min-width: 24px; height: 24px; padding: 0 5px; margin-left: 5px; vertical-align: 3px; place-items: center; border-radius: 20px; background: #f7e8ed; color: #a8496a; font: 700 10px 'DM Sans','Noto Sans Bengali',sans-serif; letter-spacing: 0; }
 .admin-search { width: min(100%, 258px); height: 38px; padding: 0 11px; display: flex; align-items: center; gap: 8px; border: 1px solid #ead9df; border-radius: 4px; color: #a78d98; background: #fff; }
 .admin-search:focus-within { border-color: #c53670; }
 .admin-search input { width: 100%; min-width: 0; outline: 0; border: 0; background: transparent; color: #392832; font-size: 10px; }
@@ -107,8 +107,8 @@
 .admin-order-list { display: grid; gap: 12px; }
 .admin-order-card { overflow: hidden; border: 1px solid #eddee4; border-radius: 5px; background: #fff; box-shadow: 0 3px 14px rgba(77,45,61,.025); animation: admin-enter .35s ease both; }
 .admin-order-head { min-height: 57px; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 11px 18px; border-bottom: 1px solid #f1e7ea; background: #fffcfb; }
-.admin-order-id { color: #553a47; font: 800 12px 'Manrope',sans-serif; letter-spacing: .01em; }
-.admin-order-id span { margin-right: 6px; color: #a98f99; font: 800 8px 'DM Sans',sans-serif; letter-spacing: .12em; }
+.admin-order-id { color: #553a47; font: 800 12px 'Manrope','Noto Sans Bengali',sans-serif; letter-spacing: .01em; }
+.admin-order-id span { margin-right: 6px; color: #a98f99; font: 800 8px 'DM Sans','Noto Sans Bengali',sans-serif; letter-spacing: .12em; }
 .admin-order-date { display: flex; align-items: center; gap: 5px; margin-top: 4px; color: #9b858e; font-size: 9px; }
 .admin-status { display: inline-flex; align-items: center; padding: 6px 9px; border-radius: 20px; font-size: 9px; line-height: 1; font-weight: 750; }
 .status-pending { color: #996a24; background: #fff3d9; }
@@ -118,7 +118,7 @@
 .status-cancelled { color: #984653; background: #fbe9e9; }
 .admin-order-body { display: grid; grid-template-columns: .85fr 1.25fr 1.2fr; gap: 24px; padding: 18px; }
 .admin-section-label { display: block; margin-bottom: 8px; color: #a18892; font-size: 8px; font-weight: 800; letter-spacing: .12em; }
-.admin-customer h2 { margin: 0 0 7px; color: #45303a; font: 750 14px/1.25 'Manrope',sans-serif; letter-spacing: -.02em; }
+.admin-customer h2 { margin: 0 0 7px; color: #45303a; font: 750 14px/1.25 'Manrope','Noto Sans Bengali',sans-serif; letter-spacing: -.02em; }
 .admin-customer > a { display: block; width: fit-content; margin: 4px 0; color: #765c68; font-size: 10px; text-decoration: underline; text-decoration-color: #ead8df; text-underline-offset: 3px; }
 .admin-customer > a:hover { color: #b52e67; }
 .admin-customer > a.admin-email { color: #987e89; font-size: 9px; }
@@ -133,7 +133,7 @@
 .admin-order-foot { display: flex; align-items: center; justify-content: space-between; gap: 15px; min-height: 61px; padding: 11px 18px; border-top: 1px solid #f1e7ea; background: #fffdfc; }
 .admin-total { display: flex; align-items: center; gap: 12px; }
 .admin-total span { color: #9a838d; font-size: 8px; font-weight: 800; letter-spacing: .12em; }
-.admin-total strong { color: #ad3065; font: 800 17px 'Manrope',sans-serif; letter-spacing: -.04em; }
+.admin-total strong { color: #ad3065; font: 800 17px 'Manrope','Noto Sans Bengali',sans-serif; letter-spacing: -.04em; }
 .admin-status-control { display: flex; align-items: center; gap: 8px; color: #a76c83; }
 .admin-status-control > span { color: #927b85; font-size: 9px; }
 .admin-status-control select { min-width: 115px; height: 32px; padding: 0 26px 0 9px; border: 1px solid #ead7df; border-radius: 3px; outline: 0; color: #684a58; background: #fff; font-size: 10px; font-weight: 700; cursor: pointer; }
@@ -145,7 +145,7 @@
 .admin-delete-dialog { width: calc(100vw - 32px); max-width: 420px; border: 1px solid #eddde3; border-radius: 8px; color: #392832; background: #fffdfc; }
 .admin-delete-dialog-header { text-align: left; }
 .admin-delete-dialog-icon { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; color: #b23d59; background: #fbe9ed; }
-.admin-delete-dialog h2 { margin: 0; color: #392832; font: 800 19px/1.2 'Manrope',sans-serif; letter-spacing: -.04em; }
+.admin-delete-dialog h2 { margin: 0; color: #392832; font: 800 19px/1.2 'Manrope','Noto Sans Bengali',sans-serif; letter-spacing: -.04em; }
 .admin-delete-dialog p { color: #806d75; line-height: 1.6; }
 .admin-delete-dialog-footer { flex-direction: row; gap: 8px; margin-top: 8px; }
 .admin-delete-cancel { min-height: 40px; margin: 0 !important; border-color: #ead9df !important; border-radius: 4px !important; color: #684f5a !important; background: #fff !important; font-size: 11px !important; }
@@ -159,7 +159,7 @@
 .admin-order-skeleton div { height: 66px; border-radius: 4px; background: linear-gradient(100deg,#f3e5e9 20%,#fcf6f7 50%,#f3e5e9 80%); background-size: 220% 100%; animation: admin-shimmer 1.4s ease infinite; }
 .admin-orders-error, .admin-orders-empty { text-align: center; padding: 47px 20px; border: 1px solid #eddee4; border-radius: 5px; background: #fff; }
 .admin-error-icon, .admin-empty-icon { width: 48px; height: 48px; display: grid; place-items: center; margin: 0 auto 14px; border-radius: 50%; color: #bd3c70; background: #faeaf0; }
-.admin-orders-error h3, .admin-orders-empty h3 { margin: 0 0 7px; color: #4c3540; font: 800 18px 'Manrope',sans-serif; letter-spacing: -.04em; }
+.admin-orders-error h3, .admin-orders-empty h3 { margin: 0 0 7px; color: #4c3540; font: 800 18px 'Manrope','Noto Sans Bengali',sans-serif; letter-spacing: -.04em; }
 .admin-orders-error p, .admin-orders-empty > p:not(.admin-overline) { max-width: 350px; margin: 0 auto; color: #8b747e; font-size: 11px; line-height: 1.6; overflow-wrap: anywhere; }
 .admin-orders-error button { display: inline-flex; align-items: center; gap: 7px; margin-top: 17px; padding: 9px 13px; border: 1px solid #dfc5cf; border-radius: 3px; background: #fff; color: #a92c5e; font-size: 10px; font-weight: 700; }
 .admin-orders-empty { padding-top: 43px; padding-bottom: 42px; }
@@ -222,4 +222,27 @@
 @media (prefers-reduced-motion: reduce) {
   .admin-login-card, .admin-order-card { animation: none; }
   .admin-loading-mark, .admin-skeleton-line, .admin-skeleton-input, .admin-order-skeleton div { animation-duration: 4s; }
+}
+
+html[lang="bn"] .admin-lock-mark,
+html[lang="bn"] .admin-overline,
+html[lang="bn"] .admin-login-card h1,
+html[lang="bn"] .admin-login-footer span:last-child,
+html[lang="bn"] .admin-brand small,
+html[lang="bn"] .admin-session-indicator,
+html[lang="bn"] .admin-heading-row h1,
+html[lang="bn"] .admin-today-mark,
+html[lang="bn"] .admin-stat > span,
+html[lang="bn"] .admin-orders-title h2,
+html[lang="bn"] .admin-order-id,
+html[lang="bn"] .admin-order-id span,
+html[lang="bn"] .admin-section-label,
+html[lang="bn"] .admin-customer h2,
+html[lang="bn"] .admin-note span,
+html[lang="bn"] .admin-total span,
+html[lang="bn"] .admin-delete-dialog h2,
+html[lang="bn"] .admin-orders-error h3,
+html[lang="bn"] .admin-orders-empty h3,
+html[lang="bn"] .admin-footnote span {
+  letter-spacing: normal;
 }
